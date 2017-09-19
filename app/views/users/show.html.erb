@@ -1,0 +1,20 @@
+
+<% if @user.admin? %>
+  <%= "ADMIN" %>
+<% end %>
+
+<% if flash[:notice] %>
+  <h3><%= flash[:notice] %></h3><br>
+<% end %>
+
+<ul>
+  <li>Name: <%= @user.name %></li>
+  <li>Tickets: <%= @user.tickets %></li>
+  <li>Mood: <%= @user.mood %></li>
+  <li>Nausea: <%= @user.nausea %></li>
+  <li>Height: <%= @user.height %></li>
+</ul>
+
+<%= link_to "See attractions", attractions_path %> </td>
+
+ <a href="/logout">Log Out</a>
