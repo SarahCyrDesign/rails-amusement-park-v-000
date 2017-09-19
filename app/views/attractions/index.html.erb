@@ -12,8 +12,6 @@ Here is a list of our rides! <br>
     <td> <%= attraction.name %> </td>
     <td> <%= attraction.tickets %> </td>
     <% if @user.admin? %>
-    <%= link_to "New Attraction", new_attraction_path %>
-
       <td><%= link_to "Show #{attraction.name}", attraction_path(attraction) %> </td>
     <% else %>
       <td><%= link_to "Go on #{attraction.name}",  attraction_path(attraction)%> </td>
@@ -22,3 +20,7 @@ Here is a list of our rides! <br>
   <% end %>
 </table>
 <br>
+
+<% if @user.admin? %>
+  <%= link_to "New Attraction", new_attraction_path %>
+<% end %>

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  root 'application#home'
+  root 'welcome#home'
 
   get '/signin', to: 'sessions#new'
 
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get 'logout' => 'sessions#destroy'
 
-  post 'rides/new', to: 'rides#new'
+  post '/rides/create', to: 'rides#create'
 
   resources :attractions
   resources :users

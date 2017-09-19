@@ -2,14 +2,19 @@ class RidesController < ApplicationController
 
 #get 'rides/new' to: 'rides#new'
   def new
-    @ride = Ride.create(:user_id => params[:user_id], :attraction_id => params[:attraction_id])
-    if @ride.take_ride == true
-      flash[:notice] = "Thank you for riding the #{@ride.attraction.name}"
-      redirect_to user_path(@ride.user)
-    else
-      flash[:notice] = @ride.take_ride
-      redirect_to user_path(@ride.user)
-    end
+    @ride = Ride.new
   end
+
+  def create
+    @user = User.find(params[:ride][:user_id])
+    @ride = Ride.create(ride_params)
+    flash[:notice] = @ride.take_ride
+    redirect_to user_path(@user)
+  end
+
+  private
+    def ride_params
+      params.require(:ride).permit(:user_id, :attraction_id)
+    end
 
 end
